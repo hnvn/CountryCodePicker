@@ -62,7 +62,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
 
   @override
   Widget build(BuildContext context) {
-    final bottomPadding = MediaQuery.of(context).padding.bottom;
+    final bottomPadding = MediaQuery.of(context).viewInsets.bottom;
     final dialogWidth = widget.size?.width ?? MediaQuery.of(context).size.width;
     final dialogHeight =
         widget.size?.height ?? MediaQuery.of(context).size.height * 0.85;

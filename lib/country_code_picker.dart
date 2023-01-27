@@ -4,7 +4,6 @@ import 'package:collection/collection.dart' show IterableExtension;
 import 'package:country_code_picker/country_code.dart';
 import 'package:country_code_picker/country_codes.dart';
 import 'package:country_code_picker/selection_dialog.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:universal_platform/universal_platform.dart';
@@ -165,6 +164,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
     else {
       _widget = TextButton(
         onPressed: widget.enabled ? showCountryCodePickerDialog : null,
+        style: TextButton.styleFrom(padding: EdgeInsets.zero),
         child: Padding(
           padding: widget.padding,
           child: Flex(
@@ -328,27 +328,25 @@ class CountryCodePickerState extends State<CountryCodePicker> {
         barrierColor: widget.barrierColor ?? Colors.grey.withOpacity(0.5),
         backgroundColor: widget.backgroundColor ?? Colors.transparent,
         context: context,
-        builder: (context) => Center(
-          child: SelectionDialog(
-            elements,
-            favoriteElements,
-            showCountryOnly: widget.showCountryOnly,
-            emptySearchBuilder: widget.emptySearchBuilder,
-            searchDecoration: widget.searchDecoration,
-            searchStyle: widget.searchStyle,
-            textStyle: widget.dialogTextStyle,
-            boxDecoration: widget.boxDecoration,
-            showFlag: widget.showFlagDialog != null
-                ? widget.showFlagDialog
-                : widget.showFlag,
-            flagWidth: widget.flagWidth,
-            flagDecoration: widget.flagDecoration,
-            size: widget.dialogSize,
-            backgroundColor: widget.dialogBackgroundColor,
-            barrierColor: widget.barrierColor,
-            hideSearch: widget.hideSearch,
-            closeIcon: widget.closeIcon,
-          ),
+        builder: (context) => SelectionDialog(
+          elements,
+          favoriteElements,
+          showCountryOnly: widget.showCountryOnly,
+          emptySearchBuilder: widget.emptySearchBuilder,
+          searchDecoration: widget.searchDecoration,
+          searchStyle: widget.searchStyle,
+          textStyle: widget.dialogTextStyle,
+          boxDecoration: widget.boxDecoration,
+          showFlag: widget.showFlagDialog != null
+              ? widget.showFlagDialog
+              : widget.showFlag,
+          flagWidth: widget.flagWidth,
+          flagDecoration: widget.flagDecoration,
+          size: widget.dialogSize,
+          backgroundColor: widget.dialogBackgroundColor,
+          barrierColor: widget.barrierColor,
+          hideSearch: widget.hideSearch,
+          closeIcon: widget.closeIcon,
         ),
       ).then((e) {
         if (e != null) {

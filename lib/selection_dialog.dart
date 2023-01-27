@@ -2,8 +2,6 @@ import 'package:country_code_picker/country_code.dart';
 import 'package:country_code_picker/country_localizations.dart';
 import 'package:flutter/material.dart';
 
-import 'dart:math';
-
 /// selection dialog used for selection of the country code
 class SelectionDialog extends StatefulWidget {
   final List<CountryCode> elements;
@@ -66,9 +64,6 @@ class _SelectionDialogState extends State<SelectionDialog> {
     final dialogWidth = widget.size?.width ?? MediaQuery.of(context).size.width;
     final dialogHeight =
         widget.size?.height ?? MediaQuery.of(context).size.height * 0.85;
-    final adjustBottomPadding = max(
-        bottomPadding - (MediaQuery.of(context).size.height - dialogHeight) / 2,
-        0.0);
     return Padding(
       padding: const EdgeInsets.all(0.0),
       child: Container(
@@ -93,9 +88,10 @@ class _SelectionDialogState extends State<SelectionDialog> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             IconButton(
-              padding: const EdgeInsets.all(0),
-              iconSize: 20,
+              padding: const EdgeInsets.only(top: 8.0),
+              iconSize: 24,
               icon: widget.closeIcon!,
+              visualDensity: VisualDensity.compact,
               onPressed: () => Navigator.pop(context),
             ),
             if (!widget.hideSearch)
@@ -109,7 +105,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
               ),
             Expanded(
               child: ListView(
-                padding: EdgeInsets.only(bottom: adjustBottomPadding),
+                padding: EdgeInsets.only(bottom: bottomPadding, top: 12.0),
                 children: [
                   widget.favoriteElements.isEmpty
                       ? const DecoratedBox(decoration: BoxDecoration())
@@ -138,6 +134,9 @@ class _SelectionDialogState extends State<SelectionDialog> {
                         },
                       ),
                     ),
+                  Container(
+                    height: 32,
+                  ),
                 ],
               ),
             ),

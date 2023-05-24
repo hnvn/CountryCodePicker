@@ -199,8 +199,8 @@ class CountryCodePickerState extends State<CountryCodePicker> {
                     widget.showOnlyCountryWhenClosed
                         ? selectedItem!.toCountryStringOnly()
                         : selectedItem.toString(),
-                    style:
-                        widget.textStyle ?? Theme.of(context).textTheme.button,
+                    style: widget.textStyle ??
+                        Theme.of(context).textTheme.labelLarge,
                     overflow: widget.textOverflow,
                   ),
                 ),
@@ -325,7 +325,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
       });
     } else {
       showMaterialModalBottomSheet(
-        barrierColor: widget.barrierColor ?? Colors.grey.withOpacity(0.5),
+        barrierColor: widget.barrierColor,
         backgroundColor: widget.backgroundColor ?? Colors.transparent,
         context: context,
         builder: (context) => SelectionDialog(
